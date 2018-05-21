@@ -13,7 +13,7 @@ app.use(cors());
 app.get('/new/:longURL(*)', (req, res, next) => {
   var { longURL } = req.params;
   console.log(longURL);
-  
+  return res.json({longURL});
 });
 
 // listen for requests :)
