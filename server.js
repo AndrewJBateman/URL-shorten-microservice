@@ -9,9 +9,11 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 
-//Get to obtain entry for database
-app.get("/new/:longURL(·)", (req, res) => {
-  res.sendFile(__dirname + '/views/index.html');
+//Get to obtain longURL as entry for database (* means accept all the url)
+app.get('/new/:longURL(*)', (req, res, next) => {
+  var { longURL } = req.params;
+  console.log(longURL);
+  
 });
 
 // listen for requests :)
