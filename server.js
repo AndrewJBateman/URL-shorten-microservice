@@ -25,6 +25,11 @@ app.get('/new/:longURL(*)', (req, res, next) => {
  
 });
 
+function shortURLNumberGen() {
+  var randomChannel = Math.floor(Math.random() * 10000);
+  return (randomChannel);
+}
+
 // listen for requests :)
 var listener = app.listen(port, () => {
   console.log('Your app is listening on port ' + listener.address().port);
