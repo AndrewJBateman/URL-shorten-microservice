@@ -1,4 +1,5 @@
 // init project
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -26,10 +27,6 @@ app.get('/new/:longURL(*)', (req, res, next) => {
  
 });
 
-function shortURLNumberGen() {
-  var randomChannel = Math.floor(Math.random() * 10000);
-  return (randomChannel);
-}
 
 // listen for requests :)
 var listener = app.listen(port, () => {
