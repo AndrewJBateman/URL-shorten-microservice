@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "name": "url-shorten-microservice",
+  "version": "1.0.0",
+  "description": "Pass a URL as a parameter and receive a shortened URL in the JSON response.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -16,7 +13,7 @@
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://github.com/AndrewJBateman/URL-shorten-microservice.git"
   },
   "license": "MIT",
   "keywords": [
