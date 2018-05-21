@@ -1,15 +1,17 @@
 // init project
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
 
-app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(cors());
 
-
-
-
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+//Get to obtain entry for database
+app.get("/new/:longURL(·)", (req, res) => {
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 // listen for requests :)
