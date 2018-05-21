@@ -12,8 +12,15 @@ app.use(cors());
 //Get to obtain longURL as entry for database (* means accept all the url)
 app.get('/new/:longURL(*)', (req, res, next) => {
   var { longURL } = req.params;
-  console.log(longURL);
-  return res.json({longURL});
+  
+  //use regex to check url is valid
+  const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
+
+  if (regex.test(longURL)===true) {
+     return res.json({longURL});
+  }
+  return res.json({longURL: 'invalid url'});
+ 
 });
 
 // listen for requests :)
