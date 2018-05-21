@@ -16,8 +16,7 @@ app.get('/new/:longURL(*)', (req, res, next) => {
   var { longURL } = req.params;
   
   //use regex to check url is valid
-  // Credit to http://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
-  // Created by Diogo Cardoso, and Zemljoradnik
+  // this regex info from http://stackoverflow.com/questions/
   const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
 
   if (regex.test(longURL)===true) {
