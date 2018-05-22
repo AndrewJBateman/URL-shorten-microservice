@@ -1,6 +1,6 @@
 
-const mongoose = require('mongoose');
-const dBase = mongoose.dBase;
+const mongo = require('mongolab-provider');
+const dBase = mongo.dBase;
 
 const urlDatabase = new dBase({
   
