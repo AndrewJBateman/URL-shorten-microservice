@@ -6,6 +6,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongolab = require('mongolab-provider');
+//connect to database
+mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/urlDatabases');
+
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
