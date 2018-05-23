@@ -20,9 +20,8 @@ app.use(express.static(__dirname, +'/public'));
 app.get('/new/:longURL(*)', (req, res, next) => {
   var { longURL } = req.params;
   
-  //use regex to check url is validrom http://stackoverflow.com/questions/
-  const regex = /^((ftp|http|https
-  // this regex info f):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
+  //use regex to check url is valid, from http://stackoverflow.com/questions/
+  const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
 
   if (regex.test(longURL)===true) {
      return res.json({longURL});
