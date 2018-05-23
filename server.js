@@ -5,15 +5,20 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require("mongoose");
 const mongolab = require('mongolab-provider');
+
 //connect to database
-//mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/shortURLs');
+mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
 
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 const port = process.env.PORT || '3000';
+var listener = app.listen(port, () => {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -49,7 +54,4 @@ app.get('/:URLtoReturn', (req, res, next) => {
 });
 
 
-// listen for requests :)
-var listener = app.listen(port, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+
