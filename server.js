@@ -44,14 +44,11 @@ app.get('/new/:longURL(*)', (req, res, next) => {
         return res.send('error in saving to database')
       }
     }); //end of function save
-  }
+  } //end if
   return res.json({longURL: 'invalid url'});
-});
+}); //end function get
 
 //Query database and return original URL using shortid
 app.get('/:URLtoReturn', (req, res, next) => {
   var short_URL = req.params.URLtoReturn; 
 });
-
-
-

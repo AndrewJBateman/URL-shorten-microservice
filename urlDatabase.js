@@ -1,12 +1,13 @@
 
-const mongolab = require('mongolab-provider');
-const dBase = mongolab.dBase;
+const mongoose = require('mongoose');
+const mongolab = require("mongolab-provider");
+const dBase = mongoose.dBase;
 
 const urlDatabase = new dBase({
   longURL: String,
   shortURL: String
 }, {timestamp: true});
 
-const modelClass = mongolab.model('shortURL', urlDatabase);
+const modelClass = mongoose.model('shortURL', urlDatabase);
 
 module.exports = modelClass;
