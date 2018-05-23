@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongolab = require('mongolab-provider');
 //connect to database
-mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/shortURLs');
+//mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/shortURLs');
 
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
@@ -33,6 +33,12 @@ app.get('/new/:longURL(*)', (req, res, next) => {
       original_URL: longURL,
       short_URL: shortURL
     });
+    
+    shortURL.save(err => {
+      if(err){
+        return res.send('error in saving to database')
+      }
+    }); //end of function save
   }
   return res.json({longURL: 'invalid url'});
  
