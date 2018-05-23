@@ -1,9 +1,11 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var URL = new Schema({
-	url: String,
-	minurl: String
-});
+var urlSchema = new Schema({
+	longURL: String, //original URL
+	shorterURL: String
+}, {timestamp: true});
 
-module.exports = mongoose.model('URL', URL);
+const modelClass = mongoose.model('shortURL', urlSchema);
+
+module.exports = modelClass;
