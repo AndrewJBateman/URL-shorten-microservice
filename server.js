@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongolab = require('mongolab-provider');
 //connect to database
-mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/urlDatabases');
+mongolab.connect(process.env.MONGO_URL || 'mongolab://localhost/shortURLs');
 
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
@@ -28,7 +28,11 @@ app.get('/new/:longURL(*)', (req, res, next) => {
   const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
 
   if (regex.test(longURL)===true) {
-     return res.json({longURL});
+    var shortURL = shortid.generate();
+    return res.json({
+      original_URL: longURL,
+      short_URL: shortURL
+    });
   }
   return res.json({longURL: 'invalid url'});
  
