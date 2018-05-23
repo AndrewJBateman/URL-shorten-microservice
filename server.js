@@ -41,7 +41,11 @@ app.get('/new/:longURL(*)', (req, res, next) => {
     }); //end of function save
   }
   return res.json({longURL: 'invalid url'});
- 
+});
+
+//Query database and return original URL using shortid
+app.get('/:URLtoReturn', (req, res, next) => {
+  var short_URL = req.params.URLtoReturn; 
 });
 
 
