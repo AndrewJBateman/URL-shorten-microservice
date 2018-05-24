@@ -34,11 +34,14 @@ app.get('/new/:longURL(*)', (req, res, next) => {
   const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
 
   if (regex.test(longURL)===true) {
-    var shortURL = shortid.generate();
-    return res.json({
-      original_URL: longURL,
-      short_URL: shortURL
-    });
+    var short = shortid.generate();
+    
+    var data = new shortURL(
+      {
+        originalURL: longURL,
+        shorterURL: shortURL
+      }
+    );
     
     shortURL.save(err => {
       if(err){
