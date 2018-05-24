@@ -39,15 +39,18 @@ app.get('/new/:longURL(*)', (req, res, next) => {
     var data = new shortURL(
       {
         originalURL: longURL,
-        shorterURL: shortURL
+        shorterURL: short
       }
     );
     
-    shortURL.save(err => {
+    data.save(err => {
       if(err){
         return res.send('error in saving to database')
       }
     }); //end of function save
+    
+    return res.json(data);
+    
   } //end if
   return res.json({longURL: 'invalid url'});
 }); //end function get
