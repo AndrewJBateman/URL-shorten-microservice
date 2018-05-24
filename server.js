@@ -64,6 +64,9 @@ app.get('/:urlToForward', (req, res, next) => {
   var shorterURL = req.params.urlToForward;
   
   shortURL.findOne({'shorterURL': shorterURL}, (err, data) => {
+    if(err) return res.send('Error reading database');
+    var regex = new RegExp()("^(http|https)://", "i");
+    var strToCheck = data.longURL;
     
   });
   
