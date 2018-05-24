@@ -21,7 +21,7 @@ const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
