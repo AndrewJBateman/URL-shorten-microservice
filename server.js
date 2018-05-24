@@ -76,7 +76,8 @@ app.get('/:urlToForward', (req, res, next) => {
       res.redirect(301, 'http://' + data.originalURL);
     }
   });
-  
-var listener = app.liten   
+});
 
+var listener = app.listen(port, function(){
+  console.log('Your app is listening on port ' + listener.address().port);
 });
