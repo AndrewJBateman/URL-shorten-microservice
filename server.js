@@ -48,14 +48,18 @@ app.get('/new/:longURL(*)', (req, res, next) => {
         return res.send('error in saving to database')
       }
     }); //end of function save
-    
-    return res.json(data);
-    
+    return res.json(data); 
   } //end if
-  return res.json({longURL: 'invalid url'});
+  
+  var data = new shortURL({
+    originalURL: 'original URL does not match',
+    shorterURL: 'Invalid URL'
+  });
+  return res.json(data);
 }); //end function get
 
-//Query database and return original URL using shortid
-app.get('/:URLtoReturn', (req, res, next) => {
-  var short_URL = req.params.URLtoReturn; 
+//Query database and return original URL using key v
+app.get('/:urlToForward', (req, res, next) => {
+  //store param value
+  var shorterURL = req.params.urlToForward; 
 });
