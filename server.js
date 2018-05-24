@@ -10,7 +10,10 @@ const mongolab = require('mongolab-provider');
 const shortURL = require('./models/shortURL');
 
 //connect to database
-mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
+//mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/shortURLs');
+
+app.use(express.static(__dirname +
 
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
