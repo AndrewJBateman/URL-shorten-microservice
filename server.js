@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const mongolab = require('mongolab-provider');
+const shortURL = require('./models/shortURL');
 
 //connect to database
 mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
