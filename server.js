@@ -22,9 +22,6 @@ const shortid = require('shortid');
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
 
 const port = process.env.PORT || '3000';
-var listener = app.listen(port, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -80,4 +77,6 @@ app.get('/:urlToForward', (req, res, next) => {
     }
   });
   
+var listener = app.liten   
+
 });
