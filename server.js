@@ -58,8 +58,13 @@ app.get('/new/:longURL(*)', (req, res, next) => {
   return res.json(data);
 }); //end function get
 
-//Query database and return original URL using key v
+//Query database and return original URL using key value short
 app.get('/:urlToForward', (req, res, next) => {
   //store param value
-  var shorterURL = req.params.urlToForward; 
+  var shorterURL = req.params.urlToForward;
+  
+  shortURL.findOne({'shorterURL': shorterURL}, (err, data) => {
+    
+  });
+  
 });
