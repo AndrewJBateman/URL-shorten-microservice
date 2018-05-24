@@ -67,7 +67,12 @@ app.get('/:urlToForward', (req, res, next) => {
     if(err) return res.send('Error reading database');
     var regex = new RegExp()("^(http|https)://", "i");
     var strToCheck = data.longURL;
-    
+    if(regex.test(strToCheck)){
+      res.redirect(301, data.originalURL);
+    }
+    else{
+      res.redirect(301, 'http://' + data.originalURL);
+    }
   });
   
 });
