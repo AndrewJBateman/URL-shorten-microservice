@@ -12,7 +12,7 @@ const shortURL = require('./models/shortURL');
 const MongoClient = mongodb.MongoClient;
 
 //connect to database
-mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI, {useMongoClient: true});
 //mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/shortURLs');
 
 app.use(express.static(__dirname +'/views'));
