@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var urlSchema = new Schema({
-	longURL: String, //original URL
+	originalURL: String, //original URL
 	shorterURL: String
 }, {timestamp: true});
 
