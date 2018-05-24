@@ -7,13 +7,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const mongolab = require('mongolab-provider');
+const mongodb = require('mongodb');
 const shortURL = require('./models/shortURL');
+const MongoClient = mongodb.MongoClient;
 
 //connect to database
 //mongoose.connect(process.env.MONGODB_URL, {useMongoClient: true});
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/shortURLs');
 
-app.use(express.static(__dirname +
+app.use(express.static(__dirname +'/public'));
 
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
