@@ -1,3 +1,4 @@
+//Structure for shortURL
 const mongoose = require('mongoose');
 
 //mongoose.connect(process.env.MONGOLAB_URI);
@@ -9,4 +10,5 @@ var urlSchema = new Schema({
 	shortenedURL: String
 }, {timestamp: true});
 
-module.exports = mongoose.model('shortURL', urlSchema);;
+const ModelClass = mongoose.model('shortURL', urlSchema);
+module.exports = ModelClass;

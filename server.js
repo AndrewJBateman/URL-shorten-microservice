@@ -1,11 +1,11 @@
 // init project
-const fs = require('fs');
-const path = require('path'); //utilities for working with file and directory paths
+//const fs = require('fs');
+//const path = require('path'); //utilities for working with file and directory paths
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 //const mongodb = require('mongodb');
 const shortURL = require('./models/shortURL');
 const MongoClient = require('mongodb').MongoClient;
@@ -29,8 +29,8 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     if (regex.test(originalURL)===true) {
       
       const data = new shortURL({
-          originalURL: originalURL,
-          shortenedURL: shortid.generate()
+        originalURL: originalURL,
+        shortenedURL: shortid.generate()
         });
       console.log(data);
       
@@ -79,6 +79,6 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-var listener = app.listen(port, function(){
+var listener = app.listen(port, () =>{
   console.log('Your app is listening on port ' + listener.address().port);
 });
