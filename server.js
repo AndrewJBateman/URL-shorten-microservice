@@ -33,7 +33,7 @@ app.use(express.static(__dirname, +'/public'));
         originalURL: originalURL,
         shortenedURL: shortid.generate()
         });
-      console.log(data);
+      console.log(data); //works
       
       data.save((err) => {
         
@@ -43,11 +43,8 @@ app.use(express.static(__dirname, +'/public'));
       }); //end of function save
       return res.json(data); 
     } //end regex if
-    
-    else{
-      console.log('regex error');
-    }
-  
+    //else return error
+    return res.json({originalURL: 'failed the formatting test - try another URL'});
   }); //end function get
   
   //Query database and return original URL using key value short
