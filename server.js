@@ -1,6 +1,6 @@
 // init project
-//const fs = require('fs');
-//const path = require('path'); //utilities for working with file and directory paths
+const fs = require('fs');
+const path = require('path'); //utilities for working with file and directory paths
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
