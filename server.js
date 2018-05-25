@@ -63,12 +63,12 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
         res.send('Error reading database' +err);
       } else {
         var regex = new RegExp("^(http|https)://", "i");
-        var strToCheck = data.longURL;
+        var strToCheck = data.originalURL;
         
         if (regex.test(strToCheck)){
           res.redirect(301, data.originalURL);
         } else {
-          res.redirect(301, 'https://' + data.originalURL);
+          return res.redirect(301, 'https://' + data.originalURL);
         }
       } 
     }); //end findOne
