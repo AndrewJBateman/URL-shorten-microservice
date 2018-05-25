@@ -40,7 +40,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
       );
     
       data.save(err => {
-        if(err){
+        if(err) {
           return res.send('error in saving to database')
         }
       }); //end of function save
