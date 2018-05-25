@@ -29,44 +29,46 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     //use regex to check url is valid, from http://stackoverflow.com/questions/
     const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
     if (regex.test(longURL)===true) {
-      const data = new shortURL(
-        {
+      
+      const data = new shortURL({
           originalURL: longURL,
           shorterURL: shortid.generate()
-        }
-      );
+        });
       
       data.save((err) => {
         
         if(err) {
-          res.send('error' +)
+          res.send('error ' +err)
         }
       }); //end of function save
-      res.json(data); 
+      return res.json(data); 
     } //end if
+    
+    else{
+      console.log('regex error')
+    }
   
-    var data = new shortURL({
-      originalURL: 'original URL does not match',
-      shorterURL: 'Invalid URL'
-    });
-    return res.json(data);
   }); //end function get
   
   //Query database and return original URL using key value short
   app.get('/:urlToForward', (req, res, next) => {
     //store param value
-    var shorterURL = req.params.urlToForward;
+    var short = req.params.urlToForward;
   
-    shortURL.findOne({'shorterURL': shorterURL}, (err, data) => {
+    shortURL.findOne({
+      'shorterURL': short
+    }, (err, data) => {
+      
       if(err) {
-        res.send('Error reading database');
+        res.send('Error reading database' +err);
       } else {
-        var regex = new RegExp()("^(http|https)://", "i");
+        var regex = new RegExp("^(http|https)://", "i");
         var strToCheck = data.longURL;
+        
         if (regex.test(strToCheck)){
           res.redirect(301, data.originalURL);
         } else {
-          res.redirect(301, 'http://' + data.originalURL);
+          res.redirect(301, 'https://' + data.originalURL);
         }
       } 
     }); //end findOne
