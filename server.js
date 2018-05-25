@@ -6,13 +6,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const mongodb = require('mongodb');
+//const mongodb = require('mongodb');
 const shortURL = require('./models/shortURL');
 const MongoClient = require('mongodb').MongoClient;
 const shortid = require('shortid');
-const port = process.env.PORT || 3000;
 //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,15 +23,15 @@ app.use(express.static(__dirname +'/views'));
 //connect to database
 MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
   //Get to obtain longURL as entry for database (* means accept all the url)
-  app.get('/new/:longURL(*)', (req, res, next) => {
-    const { longURL } = req.params;
+  app.get('/new/:originalURL(*)', (req, res, next) => {
+    const { originalURL } = req.params;
   
     //use regex to check url is valid, from http://stackoverflow.com/questions/
     const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
-    if (regex.test(longURL)===true) {
+    if (regex.test(originalURL)===true) {
       
       const data = new shortURL({
-          originalURL: longURL,
+          originalURL: originalURL,
           shorterURL: shortid.generate()
         });
       
