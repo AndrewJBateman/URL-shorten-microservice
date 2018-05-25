@@ -18,14 +18,15 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname, +'/public'));
 
-//connect to database
-MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
+  //connect to database
+  MongoClient.connect(process.env.MONGOLAB_URI);
   //Get to obtain original URL as entry for database (* means accept all the url)
   app.get('/new/:originalURL(*)', (req, res, next) => {
     const { originalURL } = req.params;
   
     //use regex to check url is valid, from http://stackoverflow.com/questions/
     const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
+    
     if (regex.test(originalURL)===true) {
       
       const data = new shortURL({
@@ -73,8 +74,6 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     }); //end findOne
   }); //end app.get
   
-}); //end Mongoclient connect
-
 app.get("/", (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
