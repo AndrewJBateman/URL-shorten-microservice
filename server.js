@@ -28,23 +28,21 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
   
     //use regex to check url is valid, from http://stackoverflow.com/questions/
     const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
-
     if (regex.test(longURL)===true) {
-      var short = shortid.generate();
-    
-      var data = new shortURL(
+      const data = new shortURL(
         {
           originalURL: longURL,
-          shorterURL: short
+          shorterURL: shortid.generate()
         }
       );
-    
-      data.save(err => {
+      
+      data.save((err) => {
+        
         if(err) {
-          return res.send('error in saving to database')
+          res.send('error' +)
         }
       }); //end of function save
-      return res.json(data); 
+      res.json(data); 
     } //end if
   
     var data = new shortURL({
