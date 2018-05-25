@@ -3,7 +3,6 @@ dependencies:
   cors: 2.8.4
   express: 4.16.3
   mongodb: 3.0.8
-  mongolab-provider: 1.1.1
   mongoose: 5.1.2
   shortid: 2.2.8
 packages:
@@ -319,10 +318,6 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-mj7yIUyAr9xnO2ev8pcVJ9uX7gSum5LLs1qIFoWLxA5Il50+jcojKtaO1/TbexsScZ9Poz00Pc3b86GiSqJ7WA==
-  /mongolab-provider/1.1.1:
-    dev: false
-    resolution:
-      integrity: sha1-msX5ff4hwqxS3tiPKZ8C5RMUqXE=
   /mongoose-legacy-pluralize/1.0.2:
     dev: false
     peerDependencies:
@@ -572,6 +567,5 @@ specifiers:
   cors: ^2.8.4
   express: ^4.16.3
   mongodb: ^3.0.8
-  mongolab-provider: ^1.1.1
   mongoose: ^5.1.2
   shortid: ^2.2.8

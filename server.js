@@ -6,7 +6,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require("mongoose");
-const mongolab = require('mongolab-provider');
 const mongodb = require('mongodb');
 const shortURL = require('./models/shortURL');
 const MongoClient = mongodb.MongoClient;
