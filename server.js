@@ -6,7 +6,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-//const mongodb = require('mongodb');
 const shortURL = require('./models/shortURL');
 const MongoClient = require('mongodb').MongoClient;
 const shortid = require('shortid');
@@ -49,10 +48,8 @@ app.use(express.static(__dirname, +'/public'));
   
   //Query database and return original URL
   app.get('/:shortURLId', (req, res, next) => {
-    //store param value obtained from user input
-    var short = req.params.shortURLId;
-    //compare user input with database
-    shortURL.findOne({
+    var short = req.params.shortURLId;  //store param value obtained from user input
+    shortURL.findOne({  //compare user input with database
       'shortenedURL': short
     }, (err, data) => {
       
@@ -76,5 +73,5 @@ app.get("/", (req, res) => {
 });
 
 var listener = app.listen(port, () =>{
-  console.log('Your app is listening on port ' + listener.address().port);
+  console.log('URL shortener is listening on port ' + listener.address().port);
 });
