@@ -17,8 +17,6 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname, +'/public'));
-app.use(express.static(__dirname +'/views'));
-
 
 //connect to database
 MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
@@ -34,6 +32,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
           originalURL: originalURL,
           shortenedURL: shortid.generate()
         });
+      console.log(data);
       
       data.save((err) => {
         
@@ -75,6 +74,10 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
   }); //end app.get
   
 }); //end Mongoclient connect
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 var listener = app.listen(port, function(){
   console.log('Your app is listening on port ' + listener.address().port);
