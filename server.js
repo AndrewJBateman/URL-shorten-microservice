@@ -32,7 +32,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
       
       const data = new shortURL({
           originalURL: originalURL,
-          shorterURL: shortid.generate()
+          shortenedURL: shortid.generate()
         });
       
       data.save((err) => {
@@ -42,7 +42,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
         }
       }); //end of function save
       return res.json(data); 
-    } //end if
+    } //end regex if
     
     else{
       console.log('regex error')
@@ -51,9 +51,9 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
   }); //end function get
   
   //Query database and return original URL using key value short
-  app.get('/:urlToForward', (req, res, next) => {
+  app.get('/:shortURLId', (req, res, next) => {
     //store param value
-    var short = req.params.urlToForward;
+    var short = req.params.shortURLId;
   
     shortURL.findOne({
       'shorterURL': short
