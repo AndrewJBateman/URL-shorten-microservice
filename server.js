@@ -45,7 +45,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     } //end regex if
     
     else{
-      console.log('regex error')
+      console.log('regex error');
     }
   
   }); //end function get
@@ -56,7 +56,7 @@ MongoClient.connect(process.env.MONGOLAB_URI, function(err, db){
     var short = req.params.shortURLId;
   
     shortURL.findOne({
-      'shorterURL': short
+      'shortenedURL': short
     }, (err, data) => {
       
       if(err) {
