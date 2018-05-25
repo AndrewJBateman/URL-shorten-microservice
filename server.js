@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.static(__dirname, +'/public'));
 
   //connect to database
-  MongoClient.connect(process.env.MONGOLAB_URI);
+//  MongoClient.connect(process.env.MONGOLAB_URI);
   //Get to obtain original URL as entry for database (* means accept all the url)
   app.get('/new/:originalURL(*)', (req, res, next) => {
     const { originalURL } = req.params;
@@ -29,21 +29,21 @@ app.use(express.static(__dirname, +'/public'));
     
     if (regex.test(originalURL)===true) {
       
-      const data = new shortURL({
+      const data = new shortURL(
+        {
         originalURL: originalURL,
         shortenedURL: shortid.generate()
-        });
+        }
+      );
       console.log(data); //works
       
-      data.save((err) => {
-        
+      data.save(err => {
         if(err) {
-          res.send('error ' +err)
+          return res.send('error saving to database');
         }
       }); //end of function save
       return res.json(data); 
-    } //end regex if
-    //else return error
+    } //end regex if, else return error
     return res.json({originalURL: 'failed the formatting test - try another URL'});
   }); //end function get
   
