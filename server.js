@@ -64,7 +64,7 @@ app.use(express.static(__dirname, +'/public'));
         
         if (regex.test(strToCheck)){ //if test passes redirect to the original URL
           res.redirect(301, data.originalURL);
-        } else { //otherwise add https in front
+        } else { //otherwise add https in front or the original URL
           return res.redirect(301, 'https://' + data.originalURL);
         }
       } 
