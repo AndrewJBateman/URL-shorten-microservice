@@ -47,11 +47,11 @@ app.use(express.static(__dirname, +'/public'));
     return res.json({originalURL: 'failed the formatting test - try another URL'});
   }); //end function get
   
-  //Query database and return original URL using key value short
+  //Query database and return original URL
   app.get('/:shortURLId', (req, res, next) => {
-    //store param value
+    //store param value obtained from user input
     var short = req.params.shortURLId;
-  
+    //compare user input with database
     shortURL.findOne({
       'shortenedURL': short
     }, (err, data) => {
@@ -62,9 +62,9 @@ app.use(express.static(__dirname, +'/public'));
         var regex = new RegExp("^(http|https)://", "i");
         var strToCheck = data.originalURL;
         
-        if (regex.test(strToCheck)){
+        if (regex.test(strToCheck)){ //if test passes redirect to the original URL
           res.redirect(301, data.originalURL);
-        } else {
+        } else { //otherwise add https in front
           return res.redirect(301, 'https://' + data.originalURL);
         }
       } 
