@@ -1,5 +1,5 @@
-db/
-config/secret.js
-.npm-debug.log
-node_modules/
-*~
+# API keys
+.env
+
+# Dependency directory
+node_modules
