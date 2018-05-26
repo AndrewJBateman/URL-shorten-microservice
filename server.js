@@ -42,7 +42,7 @@ app.use(express.static(__dirname, +'/public'));
         }
       }); //end of function save
       return res.json(data); 
-    } //end regex if, else return error
+    } //end of regex if condition, else return error
     return res.json({originalURL: 'failed the formatting test - try another URL'});
   }); //end function get
   
