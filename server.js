@@ -26,7 +26,7 @@ app.use(express.static(__dirname, +'/public'));
     //use regex to check url is valid, from http://stackoverflow.com/questions/
     const regex = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm;
     
-    if (regex.test(originalURL)===true) {
+    if (regex.test(originalURL)===true) { //save as constant in database
       
       const data = new shortURL(
         {
