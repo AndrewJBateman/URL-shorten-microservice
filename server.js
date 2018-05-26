@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.static(__dirname, +'/public'));
 
   //connect to database
-//  MongoClient.connect(process.env.MONGOLAB_URI);
+  MongoClient.connect(process.env.MONGOLAB_URI);
   //Get to obtain original URL as entry for database (* means accept all the url)
   app.get('/new/:originalURL(*)', (req, res, next) => {
     const { originalURL } = req.params;
