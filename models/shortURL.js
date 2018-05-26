@@ -1,13 +1,11 @@
-//Structure for shortURL
+//Structure for storing original URLs with shortenedURL key
 const mongoose = require('mongoose');
-
-//mongoose.connect(process.env.MONGOLAB_URI);
 
 const Schema = mongoose.Schema;
 
 var urlSchema = new Schema({
 	originalURL: String, //original URL
-	shortenedURL: String
+	shortenedURL: String //shortID generated for each original URL
 }, {timestamp: true});
 
 const ModelClass = mongoose.model('shortURL', urlSchema);
