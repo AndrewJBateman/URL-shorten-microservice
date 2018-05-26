@@ -11,14 +11,14 @@ const MongoClient = require('mongodb').MongoClient;
 const shortid = require('shortid');
 //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname, +'/public'));
 
   //connect to database
-  MongoClient.connect(process.env.MONGOLAB_URI);
+  MongoClient.connect(process.env.MONGODB_URI);
   //Get to obtain original URL as entry for database (* means accept all the url)
   app.get('/new/:originalURL(*)', (req, res, next) => {
     const { originalURL } = req.params;
