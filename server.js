@@ -48,10 +48,9 @@ app.use(express.static(__dirname, +'/public'));
   
   //Query database and return original URL
   app.get('/:shortURLId', (req, res, next) => {
-    //store param value obtained from user input
-    var short = req.params.shortURLId;
-    //compare user input with database
-    shortURL.findOne({
+    
+    var short = req.params.shortURLId; //store param value obtained from user input
+    shortURL.findOne({ //compare user input with database
       'shortenedURL': short
     }, (err, data) => {
       
