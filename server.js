@@ -1,5 +1,3 @@
-// init project
-//const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -19,9 +17,9 @@ app.use(express.static(path.join(__dirname, '/public')));
 mongoose.connect(process.env.MONGODB_URI, function(err, db){
   
   if(err){
-    console.log("mongodb connection error", err);
+    console.log("mongodb connection error ", err);
     process.exit(1);
-  }//else...
+  }//else...all good:
   console.log('connected to mongodb with URI: ' +process.env.MONGODB_URI);
   
   //show index page
@@ -46,9 +44,8 @@ mongoose.connect(process.env.MONGODB_URI, function(err, db){
           return res.send('error: unable to save to database');
         }
         console.log('all OK');
-      }); //end of function save
+      }); //end of function save error
       res.send(data);
-      //return res.json(data); 
     } //end of regex if condition, else return error
     else{
       return res.json //if url is not the correct format
