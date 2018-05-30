@@ -6,8 +6,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const mongodb = require('mongodb');
-//const MongoClient = mongodb.MongoClient;
 const shortURL = require('./models/shortURL');
 const shortid = require('shortid'); //alphanumeric characters only, all url -friendly
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@');
@@ -84,6 +82,7 @@ mongoose.connect(process.env.MONGODB_URI, function(err, db){
   }); //end app.get
     
 }); //end connect
+
 var listener = app.listen(port, () =>{
   console.log('Your app is listening on port ' + listener.address().port);
 });
