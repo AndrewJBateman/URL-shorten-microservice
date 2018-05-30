@@ -8,4 +8,4 @@ If I pass an invalid URL that doesn't follow the valid http://www.example.com fo
 
 When I visit that shortened URL, it will redirect me to my original link.
 
-Live Site https://url-shorten-microservice-ajb.herokuapp.com
+Live Site https://url-shorten-microservice-ajb.glitch.me/
