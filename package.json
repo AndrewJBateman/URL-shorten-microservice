@@ -7,23 +7,26 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "express": "^5.0.0-alpha.2",
+    "mongodb": "^3.0.10",
+    "mongoose": "^5.1.5",
     "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "mongodb": "^3.0.8",
-    "mongoose": "^5.1.3",
+    "dns": "^0.2.2",
+    "dotenv": "^4.0.0",
+    "body-parser": "^1.18.3",
     "shortid": "^2.2.8"
   },
   "engines": {
     "node": "8.x"
   },
   "repository": {
-    "url": "https://github.com/AndrewJBateman/URL-shorten-microservice.git"
+    "type": "git",
+    "url": "https://github.com/AndrewJBateman/URL-shorten-microservice"
   },
-  "license": "MIT",
   "keywords": [
     "node",
-    "glitch",
+    "hyperdev",
     "express"
-  ]
+  ],
+  "license": "MIT"
 }
