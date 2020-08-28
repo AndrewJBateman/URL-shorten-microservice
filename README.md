@@ -1,7 +1,8 @@
 # :zap: URL Shortener Microservice for freeCodeCamp
 
-* f
-* Part of FreeCodeCamp exercises for Front End Certification
+* Creates a url short ID and stores it in a database with the original url
+* Adding the shortID in a url address will redirect to the original website
+* This was part of the FreeCodeCamp exercises for Front End Certification
 
 *** Note: to open web links in a new window use: _ctrl+click on link_**
 
@@ -23,10 +24,10 @@
 
 * Original instructions (User Stories) from FCC:
 
-1. I can POST a URL to `[project_url]/api/shorturl/new` and I will receive a shortened URL in the JSON response. Example : `{"original_url":"www.google.com","short_url":1}`
+_1. I can POST a URL to `[project_url]/api/shorturl/new` and I will receive a shortened URL in the JSON response. Example : `{"original_url":"www.google.com","short_url":1}`
 2. If I pass an invalid URL that doesn't follow the valid `http(s)://www.example.com(/more/routes)` format, the JSON response will contain an error like `{"error":"invalid URL"}`. *HINT*: to be sure that the submitted url points to a valid site you can use the function `dns.lookup(host, cb)` from the `dns` core module.
 3. When I visit the shortened URL, it will redirect me to my original link.
-4. `[this_project_url]/api/shorturl/3` will redirect to `http://forum.freecodecamp.com`
+4. `[this_project_url]/api/shorturl/3` will redirect to `http://forum.freecodecamp.com`_
 
 * MongoDB Cloud Atlas database set up to use Google Cloud Storage.
 * Example: POST [project_url]/api/shorturl/new - body (urlencoded) :  url=`https://www.google.com`
@@ -34,13 +35,16 @@
 ## :camera: Screenshots
 
 ![Example screenshot](./img/shorten.png).
+![Example screenshot](./img/mongodb.png).
 
 ## :signal_strength: Technologies
 
 * [Node v12](https://nodejs.org/en/) javaScript runtime built on Chrome's V8 JavaScript engine
-* [Express v4](https://expressjs.com/) Fast, unopinionated, minimalist web framework for Node.js
+* [Express v5](https://expressjs.com/) Fast, unopinionated, minimalist web framework for Node.js
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cloud-based NoSQL database
 * [mongoose v5](https://mongoosejs.com/) object modelling for node.js.
+* [dbs v0.2.2](https://www.npmjs.com/package/dns) DNS Server with a web UI and Redis configuration store
+* [shortid v2](https://www.npmjs.com/package/shortid) to generate short non-sequential url-friendly unique ids
 * [Cors v2](https://www.npmjs.com/package/cors) node.js package for providing Connect/Express middleware that can be used to enable CORS with various options.
 
 ## :floppy_disk: Setup
@@ -52,25 +56,48 @@
 
 ## :computer: Code Examples
 
-* extract from `server.js` f
+* extract from `server.js` to check url is valid then generate short url using npm shortid module then save both in database
 
 ```javascript
+//use dns lookup function to check url is valid
+dns.lookup(parsedURL.host, (err, address) => {
+	if (address === undefined) {
+		res.json({
+			error:
+			'This url failed the formatting test - check and try again. ' +
+			err,
+		});
+	} else {
+		const data = new shortURL({
+			originalURL: prependHttp(originalURL),
+			shortenedURL: shortid.generate(),
+		});
+		console.log(data);
 
+		data.save((err) => {
+			if (err) {
+				console.log(err);
+				return res.send('error: unable to save to database');
+			}
+				console.log('all OK');
+		});
+		res.send(data);
+	}
+});
 ```
 
 ## :cool: Features
 
-* Common MongoDB Atlas Cloud connection method used to save a lot of time with multple projects.
+* Common MongoDB Atlas Cloud connection method used to save a lot of time with multiple projects.
 
 ## :clipboard: Status & To-Do List
 
-* Status: Working
-* To-Do: nothing
+* Status: Working. Nothing to stop the same url being saved in the database multiple times with dofferent shortIDs.
+* To-Do: add a check to prevent duplicate websites having different shortIDs in the database. Replace var with const & let
 
 ## :clap: Inspiration
 
-* [freeCodeCamp's APIs and Microservices Projects - URL Shortener Microservice](https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice) - although it has changed in the years since I completed this challlenge.
-* [FCC passport.serializeUser() & passport deserializeUser() explanation](https://forum.freecodecamp.org/t/passport-serializeuser-passport-deserializeuser-explanation/205578)
+* [freeCodeCamp's APIs and Microservices Projects - URL Shortener Microservice](https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice)
 
 ## :envelope: Contact
 

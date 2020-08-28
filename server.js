@@ -1,4 +1,5 @@
 'use strict';
+const dotenv = require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -8,7 +9,6 @@ const mongoose = require('mongoose');
 const shortURL = require('./models/shortURL');
 const url = require('url');
 const dns = require('dns');
-const dotenv = require('dotenv').config();
 const shortid = require('shortid'); //alphanumeric characters only, all url -friendly
 shortid.characters(
 	'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@'
@@ -53,7 +53,7 @@ mongoose.connect(
 			const originalURL = req.body.url;
 			//add http if not there already using prependHttp function
 			const parsedURL = url.parse(prependHttp(originalURL));
-			console.log(parsedURL);
+			console.log('parsedURL is: ', parsedURL);
 
 			//use dns lookup function to check url is valid
 			dns.lookup(parsedURL.host, (err, address) => {
@@ -82,7 +82,7 @@ mongoose.connect(
 			});
 		});
 
-		//Query Horuko-mLab database and return original URL
+		//Query mongoDB database and return original URL
 		app.get('/api/shorturl/:shortURLID', (req, res, next) => {
 			var short = req.params.shortURLID; //store param value obtained from user input
 			shortURL.findOne({ shortenedURL: short }, (err, data) => {

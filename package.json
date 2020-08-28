@@ -8,16 +8,16 @@
   },
   "dependencies": {
     "express": "^5.0.0-alpha.2",
-    "mongodb": "^3.0.10",
-    "mongoose": "^5.1.5",
-    "cors": "^2.8.4",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.10.2",
+    "cors": "^2.8.5",
     "dns": "^0.2.2",
-    "dotenv": "^4.0.0",
-    "body-parser": "^1.18.3",
-    "shortid": "^2.2.8"
+    "dotenv": "^8.2.0",
+    "body-parser": "^1.19.0",
+    "shortid": "^2.2.15"
   },
   "engines": {
-    "node": "8.x"
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
