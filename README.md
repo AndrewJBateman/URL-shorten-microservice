@@ -3,6 +3,7 @@
 * Creates a url short ID and stores it in a database with the original url
 * Adding the shortID in a url address will redirect to the original website
 * This was part of the FreeCodeCamp exercises for Front End Certification
+* Note: mLab MongoDB Heroku add-on has been shut down - suggest MongoDB Atlas (free tier) is used instead
 
 *** Note: to open web links in a new window use: _ctrl+click on link_**
 
@@ -92,7 +93,7 @@ dns.lookup(parsedURL.host, (err, address) => {
 
 ## :clipboard: Status & To-Do List
 
-* Status: Working. Nothing to stop the same url being saved in the database multiple times with dofferent shortIDs.
+* Status: Working. Nothing to stop the same url being saved in the database multiple times with different shortIDs.
 * To-Do: add a check to prevent duplicate websites having different shortIDs in the database. Replace var with const & let
 
 ## :clap: Inspiration
