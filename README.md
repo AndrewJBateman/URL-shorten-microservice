@@ -4,8 +4,12 @@
 * Adding the shortID in a url address will redirect to the original website
 * This was part of the FreeCodeCamp exercises for Front End Certification
 * Note: mLab MongoDB Heroku add-on has been shut down - suggest MongoDB Atlas (free tier) is used instead
+* **Note:** to open web links in a new window use: _ctrl+click on link_
 
-*** Note: to open web links in a new window use: _ctrl+click on link_**
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/URL-shorten-microservice?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/URL-shorten-microservice?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/URL-shorten-microservice?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/URL-shorten-microservice?style=plastic)
 
 ## :page_facing_up: Table of contents
 
@@ -19,6 +23,7 @@
   * [:cool: Features](#cool-features)
   * [:clipboard: Status & To-Do List](#clipboard-status--to-do-list)
   * [:clap: Inspiration](#clap-inspiration)
+  * [:file_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
 ## :books: General info
@@ -100,6 +105,10 @@ dns.lookup(parsedURL.host, (err, address) => {
 
 * [freeCodeCamp's APIs and Microservices Projects - URL Shortener Microservice](https://www.freecodecamp.org/learn/apis-and-microservices/apis-and-microservices-projects/url-shortener-microservice)
 
+## :file_folder: License
+
+* This project is licensed under the terms of the MIT license.
+
 ## :envelope: Contact
 
-* Repo created by [ABateman](https://www.andrewbateman.org) - you are welcome to [send me a message](https://andrewbateman.org/contact)
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
